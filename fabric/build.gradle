@@ -1,0 +1,68 @@
+plugins {
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
+}
+
+def compatCheck = providers.gradleProperty('compatCheck').getOrElse('false') == 'true'
+def mcVersion = compatCheck ? minecraft_version_compat : minecraft_version
+def fapiVersion = compatCheck ? fabric_api_version_compat : fabric_api_version
+
+version = "${mod_version}+mc26.1-26.2"
+group = maven_group
+
+base {
+    archivesName = "${mod_id}-fabric"
+}
+
+repositories {
+    maven {
+        name = 'TerraformersMC'
+        url = 'https://maven.terraformersmc.com/releases'
+    }
+}
+
+sourceSets.main {
+    java {
+        srcDir rootProject.file('common/src/main/java')
+    }
+    resources {
+        srcDir rootProject.file('common/src/main/resources')
+    }
+}
+
+loom {
+    mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+    runs {
+        client {
+            vmArg '-Dcopypastebooks.classloadtest=true'
+        }
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${mcVersion}"
+    implementation "net.fabricmc:fabric-loader:${loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${fapiVersion}"
+    compileOnly "com.terraformersmc:modmenu:${modmenu_version}"
+}
+
+processResources {
+    inputs.property 'version', version
+    filesMatching('fabric.mod.json') {
+        expand version: version
+    }
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(25)
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 25
+    options.encoding = 'UTF-8'
+}

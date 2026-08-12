@@ -1,0 +1,20 @@
+{
+    "required": true,
+    "minVersion": "0.8",
+    "package": "io.github.rianpls.copypastebooks.mixin",
+    "compatibilityLevel": "JAVA_25",
+    "client": [
+        "AbstractContainerMenuMixin",
+        "AbstractContainerScreenMixin",
+        "BookEditScreenMixin",
+        "BookSignScreenMixin",
+        "BookViewScreenMixin",
+        "HotbarSlotMixin",
+        "MultiLineEditBoxAccessor",
+        "MultilineTextFieldAccessor",
+        "MultilineTextFieldMixin"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
+}

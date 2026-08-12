@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+repositories {
+    mavenCentral()
+}
+
+// Compile only the MC-free core of the common module and unit-test it.
+sourceSets.main {
+    java {
+        srcDir rootProject.file('common/src/main/java')
+        include 'io/github/rianpls/copypastebooks/core/**'
+    }
+}
+
+sourceSets.test.resources.srcDir rootProject.file('common/src/main/resources')
+
+dependencies {
+    implementation 'com.google.code.gson:gson:2.11.0'
+    testImplementation platform('org.junit:junit-bom:5.11.4')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events 'failed', 'skipped'
+        exceptionFormat = 'full'
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 25
+    options.encoding = 'UTF-8'
+}

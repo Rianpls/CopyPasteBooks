@@ -1,0 +1,62 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version "${moddev_version}"
+}
+
+def compatCheck = providers.gradleProperty('compatCheck').getOrElse('false') == 'true'
+
+version = "${mod_version}+mc26.1-26.2"
+group = maven_group
+
+base {
+    archivesName = "${mod_id}-neoforge"
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+sourceSets.main {
+    java {
+        srcDir rootProject.file('common/src/main/java')
+    }
+    resources {
+        srcDir rootProject.file('common/src/main/resources')
+    }
+}
+
+neoForge {
+    version = compatCheck ? neo_version_compat : neo_version
+
+    mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+
+    runs {
+        client {
+            client()
+        }
+    }
+}
+
+var generateModMetadata = tasks.register('generateModMetadata', ProcessResources) {
+    var replaceProperties = [
+            mod_id         : mod_id,
+            mod_name       : mod_name,
+            mod_license    : mod_license,
+            mod_version    : "${mod_version}+mc26.1-26.2".toString(),
+            minecraft_range: minecraft_range_neoforge,
+            neo_range      : neo_range,
+    ]
+    inputs.properties replaceProperties
+    expand replaceProperties
+    from 'src/main/templates'
+    into 'build/generated/sources/modMetadata'
+}
+sourceSets.main.resources.srcDir generateModMetadata
+neoForge.ideSyncTask generateModMetadata
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 25
+    options.encoding = 'UTF-8'
+}
