@@ -6,6 +6,19 @@ CopyPasteBooks is a client-side mod for Minecraft **26.1–26.2** (Fabric and Ne
 
 Server plugins may still reject or filter books that are too large or contain blocked characters.
 
+## Screenshots
+
+<table>
+  <tr>
+    <td align="center"><a href="docs/screenshots/book-controls.png"><img src="docs/screenshots/book-controls.png" alt="CopyPasteBooks controls in the book editor"></a><br><sub>Book controls</sub></td>
+    <td align="center"><a href="docs/screenshots/settings.png"><img src="docs/screenshots/settings.png" alt="CopyPasteBooks settings screen"></a><br><sub>Settings</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="docs/screenshots/erase-confirmation.png"><img src="docs/screenshots/erase-confirmation.png" alt="Book erase confirmation"></a><br><sub>Erase confirmation</sub></td>
+    <td align="center"><a href="docs/screenshots/formatting-choice.png"><img src="docs/screenshots/formatting-choice.png" alt="Formatting export choice"></a><br><sub>Formatting choice</sub></td>
+  </tr>
+</table>
+
 ## Installation
 
 Fabric and NeoForge use separate JARs; each build supports the whole 26.1–26.2 range. Java 25 is required, so check the selected runtime when using a third-party launcher.

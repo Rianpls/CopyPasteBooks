@@ -6,6 +6,19 @@ CopyPasteBooks — клиентский мод для Minecraft **26.1–26.2** 
 
 Серверные плагины при этом могут отклонять или фильтровать слишком большие книги, а также текст с запрещёнными символами.
 
+## Скриншоты
+
+<table>
+  <tr>
+    <td align="center"><a href="docs/screenshots/book-controls.png"><img src="docs/screenshots/book-controls.png" alt="Кнопки CopyPasteBooks в редакторе книги"></a><br><sub>Кнопки в книге</sub></td>
+    <td align="center"><a href="docs/screenshots/settings.png"><img src="docs/screenshots/settings.png" alt="Экран настроек CopyPasteBooks"></a><br><sub>Настройки</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="docs/screenshots/erase-confirmation.png"><img src="docs/screenshots/erase-confirmation.png" alt="Подтверждение стирания книги"></a><br><sub>Подтверждение стирания</sub></td>
+    <td align="center"><a href="docs/screenshots/formatting-choice.png"><img src="docs/screenshots/formatting-choice.png" alt="Выбор формата выгрузки"></a><br><sub>Выбор форматирования</sub></td>
+  </tr>
+</table>
+
 ## Установка
 
 Для Fabric и NeoForge используются разные JAR; каждый поддерживает весь диапазон 26.1–26.2. Нужна Java 25. В стороннем лаунчере стоит проверить, какая версия Java выбрана.
