@@ -1,4 +1,8 @@
-# CopyPasteBooks
+<p align="center">
+  <img src="docs/icon.png" alt="CopyPasteBooks icon" width="160" height="160">
+</p>
+
+<h1 align="center">CopyPasteBooks</h1>
 
 **English** · [Русский](README_RU.md)
 
